@@ -1,18 +1,26 @@
-import { Component } from "react";
 import WordsListItem from "../words-list-item/words-list-item";
 
-import './words-list.css'
+import './words-list.css';
 
-class WordsList extends Component {
-
-
-  render() {
-    return(
-      <div className="words-list">
-        <WordsListItem/>
-      </div>
+const WordsList = ({data}) => {
+  const elements = data.map(item => {
+    return (
+      <WordsListItem
+        key={item.id}
+        word={item.word}
+        translation={item.translation}
+        level={item.level}
+        favorite={item.favorite}
+      />
     )
-  }
+  })
+
+  return(
+    <ul className="words-list">
+      {elements}
+    </ul>
+  )
 }
+
 
 export default WordsList;
